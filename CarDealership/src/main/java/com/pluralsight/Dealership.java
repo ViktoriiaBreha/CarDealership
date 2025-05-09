@@ -82,6 +82,16 @@ public class Dealership {
         return vehicles;
     }
 
+    public Vehicle getVehicleByTheVin(int vin){
+        Vehicle vehicle = null;
+        for (Vehicle v : inventory){
+            if (v.getVin() == vin){
+                vehicle = v;
+            }
+        }
+        return vehicle;
+    }
+
     public ArrayList<Vehicle> getAllVehicles(){
         return this.inventory;
     }
@@ -93,7 +103,7 @@ public class Dealership {
     }
 
     public void removeVehicle (Vehicle vehicle){
-
+        this.inventory.remove(vehicle);
     }
 
 }

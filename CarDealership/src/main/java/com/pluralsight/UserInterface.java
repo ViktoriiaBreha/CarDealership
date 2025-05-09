@@ -48,7 +48,7 @@ public class UserInterface {
                     processAddVehicleRequest(scanner);
                     break;
                 case 9:
-                    processRemoveVehicleRequest();
+                    processRemoveVehicleRequest(scanner);
                     break;
                 case 0:
                     run=false;
@@ -164,8 +164,18 @@ public class UserInterface {
 
 
     }
-    public void processRemoveVehicleRequest(){
+    public void processRemoveVehicleRequest(Scanner scanner){
         displayVehicles(dealership.getAllVehicles());
+
+        System.out.print("Enter vin that you want to remove: ");
+        int removedVin = scanner.nextInt();
+
+        dealership.removeVehicle(dealership.getVehicleByTheVin(removedVin));
+
+        DealershipFileManager fileManager = new DealershipFileManager();
+        fileManager.saveDealership(dealership);
+
+
     }
 
 
