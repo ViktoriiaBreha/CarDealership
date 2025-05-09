@@ -18,7 +18,7 @@ public class UserInterface {
         while (run){
             displayMenuOptions();
 
-            System.out.println("Enter your choice: ");
+            System.out.print("Enter your choice: ");
             int choice1 = scanner.nextInt();
             scanner.nextLine();
 
@@ -92,7 +92,11 @@ public class UserInterface {
     public void processGetByColorRequest(){}
     public void processGetByMileageRequest(){}
     public void processGetByVehicleTypeRequest(){}
-    public void processGetAllVehicleRequest(){}
+
+    public void processGetAllVehicleRequest(){
+        displayVehicles(dealership.getAllVehicles());
+    }
+
     public void processAddVehicleRequest(){}
     public void processRemoveVehicleRequest(){}
 

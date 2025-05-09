@@ -11,27 +11,27 @@ public class DealershipFileManager {
         try{
             FileReader fileReader = new FileReader("src/main/resources/WorkshopFiles/inventory.csv");
             BufferedReader bufReader = new BufferedReader(fileReader);
-            String line = " ";
- //           String[] parts = line.split(Pattern.quote("|"));
-  //          String name = parts [0];
-   //         String address = parts[1];
- //           String phone = parts[2];
-//            dealership.
+            String line = bufReader.readLine();
+            String[] parts = line.split(Pattern.quote("|"));
+            String name = parts [0];
+            String address = parts[1];
+            String phone = parts[2];
+            dealership = new Dealership(name, address, phone);
 
             while((line = bufReader.readLine())!=null){
                 if (line.startsWith("D")){
                     continue;
                 }
 
-                String[] parts = line.split(Pattern.quote("|"));
-                int vin = Integer.parseInt(parts[0]);
-                int year = Integer.parseInt(parts[1]);
-                String make = parts[2];
-                String model = parts [3];
-                String type = parts [4];
-                String color = parts [5];
-                int odometer = Integer.parseInt(parts[6]);
-                double price = Double.parseDouble(parts[7]);
+                String[] parts2 = line.split(Pattern.quote("|"));
+                int vin = Integer.parseInt(parts2[0]);
+                int year = Integer.parseInt(parts2[1]);
+                String make = parts2[2];
+                String model = parts2 [3];
+                String type = parts2 [4];
+                String color = parts2 [5];
+                int odometer = Integer.parseInt(parts2[6]);
+                double price = Double.parseDouble(parts2[7]);
 
                 dealership.addVehicle(new Vehicle(vin,year, make, model, type, color, odometer, price));
             }
