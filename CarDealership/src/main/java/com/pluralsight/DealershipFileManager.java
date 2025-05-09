@@ -1,8 +1,6 @@
 package com.pluralsight;
 
-import java.io.BufferedReader;
-import java.io.FileReader;
-import java.io.IOException;
+import java.io.*;
 import java.util.regex.Pattern;
 
 public class DealershipFileManager {
@@ -42,6 +40,21 @@ public class DealershipFileManager {
     }
 
     public void saveDealership (Dealership dealership){
+        try{
+            FileWriter fileWriter = new FileWriter("src/main/resources/WorkshopFiles/inventory.csv", true);
+            BufferedWriter bufWriter = new BufferedWriter(fileWriter);
+
+            for (Vehicle v : dealership.getAllVehicles()) {
+                bufWriter.write(String.format("%d|%d|%s|%s|%s|%s|%d|%.2f", v.getVin(),v.getYear(), v.getMake(),
+                        v.getModel(), v.getVehicleType(), v.getColor(), v.getOdometer(), v.getPrice()));
+                bufWriter.newLine();
+            }
+            bufWriter.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+
 
     }
 }
